@@ -1,0 +1,2 @@
+#!/bin/bash
+for c1 in {a..z}; do for c2 in {a..z}; do [ "$c1$c2" != "oo" ] && echo "$c1$c2" && :; done; done
