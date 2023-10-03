@@ -1,1 +1,1 @@
-This is the readme file for this directory.
+This is a description of my project.
