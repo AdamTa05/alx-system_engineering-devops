@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
+# Fix Nginx configuration to listen on port 80
 sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
-if ! service nginx status | grep -q 'active (running)'; then
-    service nginx start
-fi
-
+service nginx stop > /dev/null 2>&1 || true
+service nginx start
