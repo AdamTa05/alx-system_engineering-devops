@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script configures Nginx to listen on port 80
+# This script configures Nginx to listen on port 80 and returns a web page with HTTP 200 status
 
 # Install Nginx if not already installed
 apt-get update
@@ -10,4 +10,16 @@ sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/def
 
 # Restart Nginx to apply changes
 service nginx restart
+
+# Create a simple HTML page to return
+echo "<!DOCTYPE html>
+<html>
+<head>
+<title>Success!</title>
+</head>
+<body>
+<h1>HTTP 200 - Success!</h1>
+<p>If you see this page, Nginx is configured properly and returning a web page with HTTP 200 status.</p>
+</body>
+</html>" > /var/www/html/index.html
 
