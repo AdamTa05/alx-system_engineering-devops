@@ -11,15 +11,12 @@ sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/def
 # Restart Nginx to apply changes
 service nginx restart
 
-# Create a simple HTML page to return
-echo "<!DOCTYPE html>
-<html>
-<head>
-<title>Success!</title>
-</head>
-<body>
-<h1>HTTP 200 - Success!</h1>
-<p>If you see this page, Nginx is configured properly and returning a web page with HTTP 200 status.</p>
-</body>
-</html>" > /var/www/html/index.html
+# Ensure Nginx is running and listening on port 80
+nginx_status=$(curl -s -o /dev/null -w "%{http_code}" localhost)
+if [ $nginx_status -eq 200 ]; then
+    echo "Nginx is running and returning HTTP 200 status on port 80"
+else
+    echo "Nginx is not running or not returning HTTP 200 status on port 80"
+    exit 1
+fi
 
