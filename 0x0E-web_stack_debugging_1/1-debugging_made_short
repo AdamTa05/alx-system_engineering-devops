@@ -1,7 +1,0 @@
-#!/bin/bash
-
-apt update
-apt install nginx -y
-nginx -t
-service nginx stop
-nginx -g 'daemon off;'
