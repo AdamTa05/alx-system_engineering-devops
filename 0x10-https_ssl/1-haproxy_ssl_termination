@@ -1,5 +1,4 @@
-
-bal
+global
         log /dev/log    local0
         log /dev/log    local1 notice
         chroot /var/lib/haproxy
@@ -42,11 +41,11 @@ frontend adamsdigital-frontend
         default_backend adamsdigital-backend
 
 frontend adamsdigital-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/clickviral.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/www.adamsdigital.tech.pem
         http-request set-header X-Forwarded-Proto https
         default_backend adamsdigital-backend
 
 backend adamsdigital-backend
         balance roundrobin
-        server 531184-web-01 34.239.253.118:80 check
-        server 531184-web-02 18.204.9.7:80 check
+        server 531184-web-01 52.91.134.80:80 check
+        server 531184-web-02 107.23.112.197:80 check
